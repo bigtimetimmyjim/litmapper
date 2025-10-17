@@ -4,16 +4,22 @@
     "slug": "barbarians-at-the-gate",
     "author": "Bryan Burrough & John Heylar",
     "cover": "barbarians_at_the_gate.JPG",
-    "summary": "This book tells the story of the leveraged buyout of RJR Nabisco, detailing the greed and excess of corporate America in the 1980s.",
-    "thoughts": "The story starts by focusing on the CEO Ross Johnson and his life leading up to the leveraged buyout (LBO) of RJR Nabisco.",
+    "summary": "This book tells the story of the leveraged buyout (LBO) of RJ Reynolds Nabisco, detailing the greed and excess of corporate America in the 1980s.",
+    "thoughts": [
+    "RJ Reynolds was a large family tobacoo business that merged with Nabisco Brands in 1985.",
+    "This story doesn't focus on one character but rather bounces between perspectives of the main players in the LBO.",
+    "Some of the LBO talk was pretty complicated but essentially, an LBO invovled borrowing lots of money to buy a company.",
+    "Ross Johnson was the CEO of RJR Nabsico during the buyout talks and formed a management team to buy the company for themselves.",
+    "They weren't expecting anyone to be able to match their huge bid which is when this story get interesting."
+    ],
     "map": "cigarette_map.png",
     "map_notes": [
       "While reading I got to wondering about the cigarette industry of the 1980s and who exactly was doing the most smoking.",
-      "RJR's corporate headquarters were in North Carolina, and most of their factories were there also.",
+      "RJR's corporate headquarters were in North Carolina, as well as most of their manufacturing.",
       "So it's no surprise that (based on the map) they were getting high on their own supply.",
       "Seems like no coincidence that New Hampshire is shaped like a chimney",
       "And it looks like 80s Vegas was pulling its weight.",
-      "One other standout is Utah - not too surprising considering the Mormon population - it appears they aren't big smokers."
+      "One other standout is Utah...not too surprising considering the Mormon population. It appears they aren't big smokers."
     ],
     "code_snippet": [
       "def load_books():",
@@ -21,9 +27,15 @@
       "        return json.load(f)"
     ],
     "code_notes": [
-      "This function loads all book data from a JSON file.",
-      "I made sure to keep it simple so the template can iterate easily.",
-      "I plan to expand this with error handling later."
+      "Data used in the map come from a public .csv file. 'The Tax Burden on Tobacco, 1970-2019 - Data.CDC.gov.'",
+      "In the first section I create a new .csv file by filtering out the unnecessary columns.",
+      "I really just need cigarette pack sales per capita and state abbreviations.",
+      "You can see the filtered dataset printed below the first cell.",
+      "After this I need to relate this dataset to the spatial state boundary (shapefile, .shp) dataset, which I got from somewhere else online.",
+      "The key function is the states_gdf.merge function, which matches the state abbreviations from both datasets and combines them into one dataset. ",
+      "After this I create the PyGMT figure.",
+      "PyGMT is a Python wrapper for the popular Generic Mapping Tools, a set of software tools written in C/C++ and used by earth scientists mostly.",
+      "The best part is it's open source."
     ],
     "notebook": "cigarettes.html"
   }

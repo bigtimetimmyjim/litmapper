@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}LitMaps{% endblock %}</title>
+    <title>{% block title %}LitMapper{% endblock %}</title>
 
     <!-- Correct way to link to a static file in Flask -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -10,7 +10,7 @@
 <body>
     <header>
         <h1><a href="{{ url_for('index') }}">LitMaps</a></h1>
-        <p>A collection of books I’ve read, paired with places that shaped them.</p>
+        <p>Books I've read and a map to go with them.</p>
     </header>
 
     <main>

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ book.title }} – LitMaps{% endblock %}
+{% block title %}{{ book.title }} – LitMapper{% endblock %}
 
 {% block content %}
 <article class="book-detail">
@@ -13,9 +13,18 @@
 
         <section class="book-summary">
             <h2>Summary</h2>
-            <p>{{ book.summary }}</p>
+            {% if book.summary is string %}
+                <p>{{ book.summary }}</p>
+            {% else %}
+                <p>{{ book.summary | join(' ') }}</p>
+            {% endif %}
+
             <h3>My Thoughts</h3>
-            <p>{{ book.thoughts }}</p>
+            {% if book.thoughts is string %}
+                <p>{{ book.thoughts }}</p>
+            {% else %}
+                <p>{{ book.thoughts | join(' ') }}</p>
+            {% endif %}
         </section>
     </div>
 
@@ -25,14 +34,12 @@
         <h2>Map</h2>
         <img src="{{ url_for('static', filename='images/maps/' + book.map) }}" alt="Map for {{ book.title }}">
         {% if book.map_notes %}
-        <p class="book-map-notes">
-            {{ book.map_notes | join(' ') }}
-        </p>
+        <p class="book-map-notes">{{ book.map_notes | join(' ') }}</p>
         {% endif %}
     </section>
     {% endif %}
 
-    <!-- Full Code -->
+    <!-- Full Code / Notebook -->
     {% if book.notebook %}
     <section class="book-notebook">
         <h2>Full Code</h2>
