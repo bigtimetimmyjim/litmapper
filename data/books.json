@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Barbarians at the Gate",
+    "slug": "barbarians-at-the-gate",
+    "author": "Bryan Burrough & John Heylar",
+    "cover": "barbarians_at_the_gate.jpg",
+    "summary": "This book tells the story of the leveraged buyout of RJR Nabisco, detailing the greed and excess of corporate America in the 1980s.",
+    "thoughts": "The story starts by focusing on the CEO Ross Johnson and his life leading up to the leveraged buyout (LBO) of RJR Nabisco.",
+    "map": "cigarette_map.png",
+    "map_notes": [
+      "While reading I got to wondering about the cigarette industry of the 1980s and who exactly was doing the most smoking.",
+      "RJR's corporate headquarters were in North Carolina, and most of their factories were there also.",
+      "So it's no surprise that (based on the map) they were getting high on their own supply.",
+      "Seems like no coincidence that New Hampshire is shaped like a chimney",
+      "And it looks like 80s Vegas was pulling its weight.",
+      "One other standout is Utah - not too surprising considering the Mormon population - it appears they aren't big smokers."
+    ],
+    "code_snippet": [
+      "def load_books():",
+      "    with open('data/books.json') as f:",
+      "        return json.load(f)"
+    ],
+    "code_notes": [
+      "This function loads all book data from a JSON file.",
+      "I made sure to keep it simple so the template can iterate easily.",
+      "I plan to expand this with error handling later."
+    ],
+    "notebook": "cigarettes.html"
+  }
+]

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}LitMaps – Books{% endblock %}
+
+{% block content %}
+<main class="books-grid">
+    {% for book in books %}
+    <a href="{{ url_for('book', slug=book.slug) }}" class="book-card">
+        {% if book.cover %}
+        <img src="{{ url_for('static', filename='images/books/' + book.cover) }}" alt="{{ book.title }} cover">
+        {% endif %}
+        <div class="book-info">
+            <h3>{{ book.title }}</h3>
+            <p>{{ book.author }}</p>
+        </div>
+    </a>
+    {% endfor %}
+</main>
+{% endblock %}

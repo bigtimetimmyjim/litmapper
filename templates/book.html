@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}{{ book.title }} – LitMaps{% endblock %}
+
+{% block content %}
+<article class="book-detail">
+
+    <!-- Cover + Summary/Thoughts -->
+    <div class="book-summary-wrapper">
+        {% if book.cover %}
+        <img class="book-cover" src="{{ url_for('static', filename='images/books/' + book.cover) }}" alt="{{ book.title }} cover">
+        {% endif %}
+
+        <section class="book-summary">
+            <h2>Summary</h2>
+            <p>{{ book.summary }}</p>
+            <h3>My Thoughts</h3>
+            <p>{{ book.thoughts }}</p>
+        </section>
+    </div>
+
+    <!-- Map -->
+    {% if book.map %}
+    <section class="book-map">
+        <h2>Map</h2>
+        <img src="{{ url_for('static', filename='images/maps/' + book.map) }}" alt="Map for {{ book.title }}">
+        {% if book.map_notes %}
+        <p class="book-map-notes">
+            {{ book.map_notes | join(' ') }}
+        </p>
+        {% endif %}
+    </section>
+    {% endif %}
+
+    <!-- Full Code -->
+    {% if book.notebook %}
+    <section class="book-notebook">
+        <h2>Full Code</h2>
+        <iframe src="{{ url_for('static', filename='notebooks/' + book.notebook) }}"
+                width="100%" height="800px" frameborder="0" style="border:1px solid #ccc;"></iframe>
+    </section>
+    {% endif %}
+
+    <!-- Code Notes -->
+    {% if book.code_notes %}
+    <section class="book-code-notes">
+        <h2>Coding Notes</h2>
+        <p>{{ book.code_notes | join(' ') }}</p>
+    </section>
+    {% endif %}
+
+    <a href="{{ url_for('index') }}">← Back to all books</a>
+</article>
+{% endblock %}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}LitMaps{% endblock %}</title>
+
+    <!-- Correct way to link to a static file in Flask -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1><a href="{{ url_for('index') }}">LitMaps</a></h1>
+        <p>A collection of books I’ve read, paired with places that shaped them.</p>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Tim W.</p>
+    </footer>
+</body>
+</html>
