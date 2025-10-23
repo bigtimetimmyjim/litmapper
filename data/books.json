@@ -6,11 +6,11 @@
     "cover": "barbarians_at_the_gate.JPG",
     "summary": "This book tells the story of the leveraged buyout (LBO) of RJ Reynolds Nabisco, detailing the greed and excess of corporate America in the 1980s.",
     "thoughts": [
-    "RJ Reynolds was a large family tobacoo business that merged with Nabisco Brands in 1985.",
+    "RJ Reynolds was a large family tobacco business that merged with Nabisco Brands in 1985.",
     "This story doesn't focus on one character but rather bounces between perspectives of the main players in the LBO.",
-    "Some of the LBO talk was pretty complicated but essentially, an LBO invovled borrowing lots of money to buy a company.",
-    "Ross Johnson was the CEO of RJR Nabsico during the buyout talks and formed a management team to buy the company for themselves.",
-    "They weren't expecting anyone to be able to match their huge bid which is when this story get interesting."
+    "Some of the LBO talk was pretty complicated but essentially, an LBO involved borrowing lots of money to buy a company.",
+    "Ross Johnson was the CEO of RJR Nabisco during the buyout talks and formed a management team to buy the company for themselves.",
+    "They weren't expecting anyone to be able to match their huge bid which is when this story gets interesting."
     ],
     "map": "cigarette_map.png",
     "map_notes": [
@@ -38,5 +38,45 @@
       "The best part is it's open source."
     ],
     "notebook": "cigarettes.html"
+  },
+  {
+    "title": "The Boom",
+    "slug": "the-boom",
+    "author": "Russell Gold",
+    "cover": "the_boom.jpg",
+    "summary": "A history of the practice of 'fracking' in the United States.",
+    "thoughts": [
+    "Fracking involves applying hydraulic pressure to shale rock in order to liberate more oil/gas from the rock.",
+    "It's considered an 'unconventional' method of extracting oil/gas - conventional methods are less complicated (i.e., drill a hole and allow the oil/gas to come out through natural pressure.)",
+    "I read this a long time ago so I don't remember many details about the companies and characters involved, I just thought it'd be easy to make a map related to it.",
+    "I recall the story is mostly told though the eyes of former Chesapeake Energy CEO Aubrey McClendon and highlights his rise to fame."
+    ],
+    "map": "frac_map.jpg",
+    "map_notes": [
+      "I recently moved to New York (Buffalo), a state where fracking is banned completely due to environmental concerns.",
+      "It has been linked to increased earthquake activity in several other regions where it is performed.",
+      "I thought it might be interesting to see a comparison to a neighboring state where fracking is legal.",
+      "Pennsylvania has massive hydrocarbon reserves in the Marcellus Shale geological formation which is present across much of the state (west of the Appalachian range).",
+      "The map on the left shows a point at each fracked well. I'd take this with a grain of salt as I just plotted coorinates from a public 'Unconventional Well' dataset for Pennsylvania. ",
+      "I suppose there may be other unconventional methods of extraction that aren't fracking.",
+      "That's ok ... I just wanted to get some data on the page and look at it.",
+      "It's a similar story for the NY State dataset.",
+      "I filtered that dataset for 'Horizontal' wells, and while horizontal drilling often indicates fracking I suppose there are times when that isn't the case.",
+      "Since there are many overlapping points on the first map I thought it would be useful to show a density grid for the points to better capture the data.",
+      "For each 'cell' or 'pixel' in the area the number of points in that cell are summed.",
+      "There are probably more interesting things I could do with these huge datasets but for now this is what you get."
+    ],
+    "code_snippet": [
+      "def load_books():",
+      "    with open('data/books.json') as f:",
+      "        return json.load(f)"
+    ],
+    "code_notes": [
+      "Data used in the maps come from public .csv files (links shown at the end of the code).",
+      "This was my first time using the xyz2grd function in pygmt.",
+      "This function can perform operations on x,y,z data - in my case I'm actually only using x and y data (coordinates), so z is given a dummy value (all 1s).",
+      "The duplicate parameter is set to 'n', which counts the number of points in cells of a size specified by the user (in this case, 0.1 arc degrees)."
+    ],
+    "notebook": "frac.html"
   }
 ]
