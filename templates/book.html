@@ -1,16 +1,26 @@
 {% extends "base.html" %}
-
 {% block title %}{{ book.title }} – LitMapper{% endblock %}
-
 {% block content %}
 <article class="book-detail">
+    <!-- Title + Date -->
+    <header class="book-header">
+        <h1 class="book-title">{{ book.title }}</h1>
+        <p class="book-author">by {{ book.author }}</p>
+        {% if book.date_posted %}
+        <div class="book-date">
+            Posted on {{ book.date_posted }}
+        </div>
+        {% endif %}
+    </header>
 
     <!-- Cover + Summary/Thoughts -->
     <div class="book-summary-wrapper">
         {% if book.cover %}
-        <img class="book-cover" src="{{ url_for('static', filename='images/books/' + book.cover) }}" alt="{{ book.title }} cover">
+        <img class="book-cover" 
+             src="{{ url_for('static', filename='images/books/' + book.cover) }}" 
+             alt="Cover of {{ book.title }} by {{ book.author }}">
         {% endif %}
-
+        
         <section class="book-summary">
             <h2>Summary</h2>
             {% if book.summary is string %}
@@ -32,9 +42,29 @@
     {% if book.map %}
     <section class="book-map">
         <h2>Map</h2>
-        <img src="{{ url_for('static', filename='images/maps/' + book.map) }}" alt="Map for {{ book.title }}">
+        <img src="{{ url_for('static', filename='images/maps/' + book.map) }}" 
+             alt="Map visualization for {{ book.title }}">
+        
         {% if book.map_notes %}
-        <p class="book-map-notes">{{ book.map_notes | join(' ') }}</p>
+        <div class="book-map-notes">
+            {% if book.map_notes is string %}
+                <p>{{ book.map_notes }}</p>
+            {% else %}
+                <p>{{ book.map_notes | join(' ') }}</p>
+            {% endif %}
+        </div>
+        {% endif %}
+    </section>
+    {% endif %}
+
+    <!-- Code Notes (before notebook for better flow) -->
+    {% if book.code_notes %}
+    <section class="book-code-notes">
+        <h2>Coding Notes</h2>
+        {% if book.code_notes is string %}
+            <p>{{ book.code_notes }}</p>
+        {% else %}
+            <p>{{ book.code_notes | join(' ') }}</p>
         {% endif %}
     </section>
     {% endif %}
@@ -45,19 +75,11 @@
         <h2>Full Code</h2>
         <div class="notebook-wrapper">
             <iframe src="{{ url_for('static', filename='notebooks/' + book.notebook) }}"
-                width="100%" height="800px" frameborder="0" style="border:1px solid #ccc;"></iframe>
+                    title="Jupyter notebook for {{ book.title }}"></iframe>
         </div>
     </section>
     {% endif %}
 
-    <!-- Code Notes -->
-    {% if book.code_notes %}
-    <section class="book-code-notes">
-        <h2>Coding Notes</h2>
-        <p>{{ book.code_notes | join(' ') }}</p>
-    </section>
-    {% endif %}
-
-    <a href="{{ url_for('index') }}">← Back to all books</a>
+    <a href="{{ url_for('index') }}" class="back-link">← Back to all books</a>
 </article>
 {% endblock %}

@@ -2,9 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>{% block title %}LitMapper{% endblock %}</title>
-
-    <!-- Correct way to link to a static file in Flask -->
+    
+    <!-- SEO Meta Tags -->
+    {% block meta %}
+    <meta name="description" content="Maps inspired by literature - visualizing book narratives through data and cartography">
+    <meta name="keywords" content="literature, maps, data visualization, books, reading, cartography">
+    <meta name="author" content="Tim Wuenscher">
+    {% endblock %}
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    {% block og_tags %}
+    <meta property="og:title" content="LitMaps - Maps inspired by literature">
+    <meta property="og:description" content="Visualizing book narratives through data and cartography">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:image" content="{{ url_for('static', filename='images/og-default.jpg', _external=True) if config.get('SERVER_NAME') else url_for('static', filename='images/og-default.jpg') }}">
+    <meta property="og:site_name" content="LitMaps">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LitMaps - Maps inspired by literature">
+    <meta name="twitter:description" content="Visualizing book narratives through data and cartography">
+    <meta name="twitter:image" content="{{ url_for('static', filename='images/og-default.jpg', _external=True) if config.get('SERVER_NAME') else url_for('static', filename='images/og-default.jpg') }}">
+    {% endblock %}
+    
+    <!-- Favicons -->
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/apple-touch-icon.png') }}">
+    
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -12,11 +42,9 @@
         <h1><a href="{{ url_for('index') }}">LitMaps</a></h1>
         <p>Maps inspired by literature.</p>
     </header>
-
     <main>
         {% block content %}{% endblock %}
     </main>
-
     <footer>
         <p>&copy; 2025 Tim Wuenscher.</p>
     </footer>
