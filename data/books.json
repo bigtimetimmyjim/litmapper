@@ -35,7 +35,7 @@
       "After this I need to relate this dataset to the spatial state boundary (shapefile, .shp) dataset, which I got from somewhere else online.",
       "The key function is the states_gdf.merge function, which matches the state abbreviations from both datasets and combines them into one dataset. ",
       "After this I create the PyGMT figure.",
-      "PyGMT is a Python wrapper for the popular Generic Mapping Tools, a set of software tools written in C/C++ and used by earth scientists mostly.",
+      "PyGMT is a Python implementation of the popular Generic Mapping Tools, a set of software tools written in C/C++ and mostly used by earth scientists.",
       "The best part is it's open source."
     ],
     "notebook": "cigarettes.html"
@@ -85,13 +85,13 @@
     "title": "A Fall of Moondust (1981)",
     "slug": "a-fall-of-moondust",
     "author": "Arthur Clarke",
-    "date_posted": "10/23/25",
+    "date_posted": "10/27/25",
     "cover": "a_fall_of_moondust.jpg",
     "summary": "A group of moon tourists find themselves in a race against time after a freak accident during a voyage.",
     "thoughts": [
     "I went on an Arthur Clarke binge in 2024 after reading Rendezvous with Rama in 2023.",
     "This one wasn't my favorite of his but it's solid.",
-    "It takes place on the moon where the main plot involves a group of space tourists and two subplots center around people involved with a resuce team.",
+    "It takes place on the moon where the main plot involves a group of space tourists and two subplots center around people involved with a rescue team.",
     "I felt that one of the subplots weakened the story a bit and wish he'd spent more time focused on the trapped tourists and fleshed out their characters a bit more.",
     "There was also a romantic subplot that felt a bit tacked on, which I've noticed in some of his other novels."
     ],
@@ -99,7 +99,7 @@
     "map_notes": [
       "The tourists in the story start in a place called Port Roris and travel across what Clarke describes as a remarkably flat expanse of almost liquid-like dust.",
       "PyGMT actually has a built in function for downloading topographic Moon data (pygmt.datasets.load_moon_relief).",
-      "The map on the left shows a siple shaded elevation map of the area of the moon that this book is allegedly based on (Sinus Roris), a large basaltic plain on the Moon's Northern Hemisphere.",
+      "The map on the left shows a simple shaded elevation map of the area of the moon that this book is allegedly based on (Sinus Roris), a large basaltic plain on the Moon's Northern Hemisphere.",
       "I also added a proposed location of the 'star port' in the book, Port Roris.",
       "The book doesn't specify exactly where it is but I put it on a solid rocky peninsula with good access to the flat dusty expanse.",
       "Youll notice that most of the elevation values on the Moon's surface are 'negative'.",
@@ -120,5 +120,81 @@
       "I'm not actually sure if it had to be converted to a NumPy array, there might be a way to do the standard deviation calcuations on the Xarray."
     ],
     "notebook": "a_fall_of_moondust.html"
+  },
+  {
+    "title": "Dune (1965)",
+    "slug": "dune",
+    "author": "Frank Herbert",
+    "date_posted": "10/29/25",
+    "cover": "dune.jpg",
+    "summary": "Several factions jostle for control of the planet Arrakis and its prized resource, 'spice'.",
+    "thoughts": [
+    "I read this before it was cool to read it.",
+    "Just kidding, like everyone else I read it after they announced it would be made into a film with Timothee Chalamet.",
+    "Dune has a strong first and second act with top-tier worldbuilding.",
+    "For me it fell flat in the last quarter or so of the book, enough so that I wasn't that interested in reading the rest of the series.",
+    "Endings are tough to write."
+    ],
+    "map": "dune.jpg",
+    "map_notes": [
+      "What else to make a map of than dunes.",
+      "Luckily we have some pretty good ones right here on Earth.",
+      "There's also no public dataset for the planet Arrakis so I didn't have much of a choice (maybe Mars has dunes?)",
+      "The dunes in this map come from coastal Namibia which has some of the tallest dunes in the world.",
+      "I wanted to get practice with a couple new PyGMT functions so I decided to make an elevation profile across a series of dunes."
+    ],
+    "code_snippet": [
+      "def load_books():",
+      "    with open('data/books.json') as f:",
+      "        return json.load(f)"
+    ],
+    "code_notes": [
+      "Data used in the maps come from PyGMT's built in earth relief dataset.",
+      "This was a pure PyGMT script, no other libraries were used.",
+      "This was my first time using the 'project' and 'grdtrack' functions.",
+      "The 'project' function takes in coordinates and an interval.",
+      "Then it returns a pandas DataFrame containing the two coordinates as the first and last values in the DataFrame, and interpolates points between them at the interval you set.",
+      "The 'grdtrack' function takes in the elevation grid and the points generated from 'project', and appends an 'elevation' column to the DataFrame generated by 'project'.",
+      "This gives you enough data to plot a smooth elevation profile between your two coordinates."
+    ],
+    "notebook": "dune.html"
+  },
+  {
+    "title": "The Fountains of Paradise (1979)",
+    "slug": "fountains_of_paradise",
+    "author": "Arthur Clarke",
+    "date_posted": "10/31/25",
+    "cover": "fountains_of_paradise.jpg",
+    "summary": "Earth takes on the task of building a space elevator to transport people and supplies into space without using rockets.",
+    "thoughts": [
+    "This book was, to some extent, a love letter to the country of Sri Lanka where Arthur Clarke lived most of his life, partially to puruse a scuba diving hobby.",
+    "I can't remember the exact reason, but in the story Sri Lanka has some geographic reason for being the best location to build the elevator, and they decide to build it on top of a sacred mountain.",
+    "Part of the story deals with tensions between the governments and the native population.",
+    "There are also several flashbacks to more ancient times between warring Sri Lankan tribes.",
+    "Like other Clarke books this one has a lot of technical descriptions.",
+    "The finale is pretty suspenseful, similar to A Fall of Moondust.",
+    "Overall I think it fell a little flat and probably sits in the lower tier of Clarke books I've read so far."
+    ],
+    "map": "fountains_of_paradise.jpg",
+    "map_notes": [
+      "For this map I wanted to practice using the 3-D perspective abilities of PyGMT, which enables some very visually pleasing maps.",
+      "Since the story is centered in Sri Lanka I decided to use the island as the focus.",
+      "I also wanted to try overlaying an image onto a map and thought putting the Sri Lankan flag on the island would look neat."
+    ],
+    "code_snippet": [
+      "def load_books():",
+      "    with open('data/books.json') as f:",
+      "        return json.load(f)"
+    ],
+    "code_notes": [
+      "Data used in the maps come from PyGMT's built in earth relief dataset, and a .png image of the Sri Lankan flag I downloaded legally.",
+      "The 3-D perspective is created using the .grdview method of the Figure class.",
+      "Unique to this method are the 'perspective' and 'surftype' parameters which dictate the angle you view the figure from and the way the surface is mapped.",
+      "I used rasterio to convert the .png image of the flag into an Xarray DataArray so it is usable by PyGMT.",
+      "The second figure actually plots a surface twice: first the flag, then an elevation grid on top of it that omits the elevation values above zero so that the flag peeks through the hole.",
+      "I wonder if there was a better way to do this.",
+      "Ideally the flag would be smaller and more 'fitted' to the country area (the flag is actually much larger) but that would involve somehow centering the image only on the island area and not the entire map."
+    ],
+    "notebook": "fountains_of_paradise.html"
   }
 ]
