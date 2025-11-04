@@ -17,3 +17,6 @@ Thumbs.db
 
 # Flask logs
 *.log
+
+# Jupyter Notebooks
+*.ipynb

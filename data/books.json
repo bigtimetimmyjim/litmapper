@@ -161,23 +161,24 @@
   },
   {
     "title": "The Fountains of Paradise (1979)",
-    "slug": "fountains_of_paradise",
+    "slug": "fountains-of-paradise",
     "author": "Arthur Clarke",
     "date_posted": "10/31/25",
     "cover": "fountains_of_paradise.jpg",
     "summary": "Earth takes on the task of building a space elevator to transport people and supplies into space without using rockets.",
     "thoughts": [
     "This book was, to some extent, a love letter to the country of Sri Lanka where Arthur Clarke lived most of his life, partially to puruse a scuba diving hobby.",
-    "I can't remember the exact reason, but in the story Sri Lanka has some geographic reason for being the best location to build the elevator, and they decide to build it on top of a sacred mountain.",
-    "Part of the story deals with tensions between the governments and the native population.",
+    "I can't remember the exact reason, but in the story Sri Lanka has some geographic anomaly that makes it the best location to build the elevator, and they decide to build it on top of a sacred mountain.",
+    "A fair amount of the story deals with tensions between the governments and the native monks who live on the mountain.",
     "There are also several flashbacks to more ancient times between warring Sri Lankan tribes.",
-    "Like other Clarke books this one has a lot of technical descriptions.",
-    "The finale is pretty suspenseful, similar to A Fall of Moondust.",
-    "Overall I think it fell a little flat and probably sits in the lower tier of Clarke books I've read so far."
+    "Like other Clarke books this one has a lot of technical descriptions, especially regarding the engineering of the elevator.",
+    "The finale is suspenseful, similar to A Fall of Moondust.",
+    "Overall I think it fell a little flat and probably sits in the lower tier of Clarke books I've read so far.",
+    "The story is heavily plot-driven and there aren't any particularly well fleshed-out characters."
     ],
     "map": "fountains_of_paradise.jpg",
     "map_notes": [
-      "For this map I wanted to practice using the 3-D perspective abilities of PyGMT, which enables some very visually pleasing maps.",
+      "For this map I wanted to practice using the 3-D perspective abilities of PyGMT, which enables quite visually pleasing maps.",
       "Since the story is centered in Sri Lanka I decided to use the island as the focus.",
       "I also wanted to try overlaying an image onto a map and thought putting the Sri Lankan flag on the island would look neat."
     ],
@@ -196,5 +197,48 @@
       "Ideally the flag would be smaller and more 'fitted' to the country area (the flag is actually much larger) but that would involve somehow centering the image only on the island area and not the entire map."
     ],
     "notebook": "fountains_of_paradise.html"
+  },
+  {
+    "title": "The City and the Stars (1956)",
+    "slug": "city-and-the-stars",
+    "author": "Arthur Clarke",
+    "date_posted": "11/4/25",
+    "cover": "city_and_the_stars.jpg",
+    "summary": "A young man escapes his futuristic utopian city to seek the truth about what happened to Earth.",
+    "thoughts": [
+    "Clarke does a great job of building the lore around the city of Diaspar and describing how the inhabitants are created and interact.",
+    "I tend to to prefer more character-driven stories like this one (which follows Alvin, a native of Diaspar who has certain special qualities).",
+    "Alvin has questions about the origin of the city, its people, and what lies outside the impenetrable, sprawling desert that surrounds it.",
+    "There's a great sense of mystery and discovery the reader gets to experience with Alvin.",
+    "I think Clarke's creative side shone in this one.",
+    "The latter part of the book is in sharp contrast to the 'realistic' (or at least loosely 'science-plausible') first act.",
+    "Maybe a bit too fantastical for me.",
+    "Still, this is probably a top 3 Clarke novel."
+    ],
+    "map": "city_and_the_stars.jpg",
+    "map_notes": [
+      "The story describes Diaspar as a great city in a vast expanse of desert on a dead Earth.",
+      "[Spoilers ahead] By the end of the book Alvin is able to harness the power of a superintelligent being and has plans to revitalize the planet back to its former glory.",
+      "I imagine water would be one of the first things Alvin would attempt to import.",
+      "This map shows what the Earth might look like after an initial very very large shipment of comets was brought to Earth and melted into a new ocean.",
+      "I chose -4000 m depth since it created some interesting-looking new continents.",
+      "Most of the new land area occurs at the mid-ocean ridges and the new continents are fairly flat and boring.",
+      "On this new Earth Madagascar is now a part of mainland Africa and the Northern hemisphere is now basically a megacontinent."
+    ],
+    "code_snippet": [
+      "def load_books():",
+      "    with open('data/books.json') as f:",
+      "        return json.load(f)"
+    ],
+    "code_notes": [
+      "Data used in the maps come from PyGMT's built in earth relief dataset.",
+      "This was my first time creating a custom colormap (solid tan for values above -4500 m and a blue gradient for values below).",
+      "PyGMT can read these colormap ('.cpt') files which contain information about the colors to be used when displaying data.",
+      "This script writes .cpt files to the folder where the script is and then reads from those .cpt files.",
+      "Colormaps I've used in previous maps have all been built-in colormaps (of which there are many).",
+      "Most map projections preserve one aspect of the real world (distances, areas, angles) to make them practically useful.",
+      "This map uses the Robinson projection which actually doesn't preserve any particular aspect but was created to look aesthetically pleasing."
+    ],
+    "notebook": "city_and_the_stars.html"
   }
 ]
