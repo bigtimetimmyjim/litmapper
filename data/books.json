@@ -240,5 +240,47 @@
       "This map uses the Robinson projection which actually doesn't preserve any particular aspect but was created to look aesthetically pleasing."
     ],
     "notebook": "city_and_the_stars.html"
+  },
+  {
+    "title": "The Walmart Effect (2006)",
+    "slug": "walmart-effect",
+    "author": "Charles Fishman",
+    "date_posted": "11/11/25",
+    "cover": "walmart_effect.jpg",
+    "summary": "The history of Walmart and its economic impact.",
+    "thoughts": [
+    "I think most people generally have a negative impression of Walmart.",
+    "'Predatory wages, lower-class shoppers, small-business killer, dystopian megacorp.'",
+    "I admit this was my impression of the store as well, especially after working there one summer during college.",
+    "This book doesn't necessarily pick a side but I think it opened my eyes to some of the benefits Walmart provides, namely",
+    " lower-priced goods so people can afford other things and jobs for areas that may not have many employment opportunities.",
+    "The book also describes Walmart as a tightly-run ship that minimizes corporate waste (a far cry from the RJR Nabisco story).",
+    "Overall the book challenges the reader to weigh their desire for cheaper goods with the hidden costs they bring."
+    ],
+    "map": "walmart_effect.jpg",
+    "map_notes": [
+      "How many Walmarts are there?",
+      "The dataset I found it a bit dated (2018), but contained 4654 stores (which includes Alaska, Hawaii, and Puerto Rico which aren't in the map).",
+      "I wondered what place in the lower 48 states is the furthest from a Walmart.",
+      "There appears to be some sort of gridding artifact happening in the northern Montana area.",
+      "I'm not sure it's legitimate.",
+      "I think the orange-colored area in Nevada is likely the the furthest from any Walmart.",
+      "I also asked ChatGPT what it would say the most remote places are in the contiguous USA, and it gave me the 5 locations marked with orange stars on the map.",
+      "I can understand all but the Florida one.",
+      "No idea what it was thinking there."
+    ],
+    "code_snippet": [
+      "def load_books():",
+      "    with open('data/books.json') as f:",
+      "        return json.load(f)"
+    ],
+    "code_notes": [
+      "Walmart store data used in the map comes from a wesbite called Kaggle.",
+      "This one was definitely a challenge and involved quite a bit of pre-processing.",
+      "Creating a custom grid from scratch involved a lot of NumPy functions I hadn't used before (meshgrid, ravel, etc).",
+      "The nearest-neighbor query (cKDTree) from scipy.spatial was really cool and I'll probably use it more in the future.",
+      "This was my first time creating a mask with a shapefile which is also extremely useful when you want to ignore certain regions (in this case, everything outside the contiguous US)."
+    ],
+    "notebook": "walmart_effect.html"
   }
 ]
